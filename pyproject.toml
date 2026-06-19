@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bindtox"
+version = "0.1.0"
+description = "Computational prediction of drug-protein binding and toxicity"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "rdkit",
+  "pandas",
+  "scikit-learn",
+  "joblib",
+  "streamlit",
+  "py3Dmol",
+  "meeko",
+  "gemmi",
+  "prody",
+  "fastapi",
+  "uvicorn",
+  "python-multipart",
+  "httpx",
+  "pymongo",
+]
+
+[project.scripts]
+bindtox = "bindtox.cli:main"
+breachwatch = "breachwatch.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]

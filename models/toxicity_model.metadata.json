@@ -1,0 +1,16 @@
+{
+  "accuracy": 0.7777777777777778,
+  "train_size": 26,
+  "test_size": 9,
+  "features": [
+    "molecular_weight",
+    "logp",
+    "h_bond_donors",
+    "h_bond_acceptors",
+    "tpsa",
+    "rotatable_bonds",
+    "heavy_atom_count"
+  ],
+  "report": "              precision    recall  f1-score   support\n\n   Non-toxic       0.67      1.00      0.80         4\n       Toxic       1.00      0.60      0.75         5\n\n    accuracy                           0.78         9\n   macro avg       0.83      0.80      0.78         9\nweighted avg       0.85      0.78      0.77         9\n",
+  "model_path": "/Users/aarya20067/Documents/Playground/models/toxicity_model.joblib"
+}

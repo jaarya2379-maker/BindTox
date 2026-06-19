@@ -1,0 +1,14 @@
+rdkit
+pandas
+scikit-learn
+joblib
+streamlit
+py3Dmol
+meeko
+gemmi
+prody
+fastapi
+uvicorn
+python-multipart
+httpx
+pymongo

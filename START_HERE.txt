@@ -1,0 +1,93 @@
+╔════════════════════════════════════════════════════════════════╗
+║                    BindTox - Start Here                        ║
+║         Drug-Protein Docking & Toxicity Prediction             ║
+╚════════════════════════════════════════════════════════════════╝
+
+🚀 FASTEST START (5 minutes)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Install dependencies:
+   conda create -n bindtox python=3.10 && conda activate bindtox
+   conda install -c conda-forge rdkit openbabel
+   pip install -r requirements.txt && pip install -e .
+
+2. Start backend (Terminal 1):
+   export PYTHONPATH=src
+   python -m bindtox.cli serve-api --host 0.0.0.0 --port 8000
+
+3. Start UI (Terminal 2):
+   ./start_app.sh
+
+4. Open browser:
+   http://localhost:8501
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🌐 SHARE WITH OTHERS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Same Network (LAN):
+  Machine A: export PYTHONPATH=src && python -m bindtox.cli serve-api --host 0.0.0.0 --port 8000
+  Machine B: export BINDTOX_API_URL="http://MACHINE_A_IP:8000" && ./start_app.sh
+  
+Public Internet (requires ngrok):
+  ./tools/expose_with_ngrok.sh
+  → Prints public URL to share
+
+Docker (easiest deployment):
+  docker compose up --build
+  → Backend: http://localhost:8000
+  → UI: http://localhost:8501
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📚 DOCUMENTATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+• README.md          — Full features and setup guide
+• QUICK_SHARE.md     — Quick sharing methods
+• SETUP_GUIDE.md     — Advanced configuration
+• tools/*.sh         — Helper scripts for automation
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+⚡ QUICK COMMANDS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Calculate molecular descriptors:
+  PYTHONPATH=src python -m bindtox.cli descriptors --smiles "CCO"
+
+Run docking:
+  PYTHONPATH=src python -m bindtox.cli dock \
+    --receptor data/receptors/1HSG.pdb \
+    --ligand my_ligand.sdf
+
+Full analysis (SMILES → docking → toxicity):
+  PYTHONPATH=src python -m bindtox.cli analyze \
+    --smiles "CCO" \
+    --receptor-pdb data/receptors/1HSG.pdb
+
+View API docs (while backend running):
+  http://localhost:8000/docs
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+❓ TROUBLESHOOTING
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Port already in use?
+  lsof -ti:8000 | xargs kill -9   # Kill backend
+  lsof -ti:8501 | xargs kill -9   # Kill UI
+
+Missing RDKit (chemistry warnings)?
+  conda install -c conda-forge rdkit
+
+ngrok not found?
+  brew install --cask ngrok
+
+Docking fails?
+  conda install -c conda-forge meeko openbabel
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✨ Ready to discover drugs! 🧪
